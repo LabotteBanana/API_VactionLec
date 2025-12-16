@@ -1,0 +1,6 @@
+@API_VactionLec_HostAddress = http://localhost:5293
+
+GET {{API_VactionLec_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
