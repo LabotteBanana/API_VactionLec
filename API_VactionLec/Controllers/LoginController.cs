@@ -19,7 +19,7 @@ namespace DotnetCoreServer.Controllers
         }
 
         // GET api/user/5
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
         public User Get(int id)
         {
             User user = userDao.GetUser(id);
