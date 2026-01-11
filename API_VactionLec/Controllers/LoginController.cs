@@ -7,12 +7,9 @@ using DotnetCoreServer.Models;
 
 namespace DotnetCoreServer.Controllers
 {
-    //[Route("[controller]/[action]")]
-    [ApiController]
-    [Route("Login")]
+    [Route("[controller]/[action]")]
     public class LoginController : Controller
     {
-
         IUserDao userDao;
         public LoginController(IUserDao userDao){
             this.userDao = userDao;
@@ -27,8 +24,7 @@ namespace DotnetCoreServer.Controllers
         }
 
         // POST Login/Facebook
-        //[HttpPost]
-        [HttpPost("Facebook")]
+        [HttpPost]
         public LoginResult Facebook([FromBody] User requestUser)
         {
 
