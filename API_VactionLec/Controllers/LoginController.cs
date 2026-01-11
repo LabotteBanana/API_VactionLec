@@ -7,7 +7,9 @@ using DotnetCoreServer.Models;
 
 namespace DotnetCoreServer.Controllers
 {
-    [Route("[controller]/[action]")]
+    //[Route("[controller]/[action]")]
+    [ApiController]
+    [Route("Login")]
     public class LoginController : Controller
     {
 
@@ -25,7 +27,8 @@ namespace DotnetCoreServer.Controllers
         }
 
         // POST Login/Facebook
-        [HttpPost]
+        //[HttpPost]
+        [HttpPost("Facebook")]
         public LoginResult Facebook([FromBody] User requestUser)
         {
 
