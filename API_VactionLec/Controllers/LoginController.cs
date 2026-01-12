@@ -14,7 +14,7 @@ namespace DotnetCoreServer.Controllers
         public LoginController(IUserDao userDao){
             this.userDao = userDao;
         }
-        /*
+        
         // GET api/user/5
         [HttpGet("{id}")]
         public User Get(int id)
@@ -22,7 +22,7 @@ namespace DotnetCoreServer.Controllers
             User user = userDao.GetUser(id);
             return user;
         }
-        */
+        
         // POST Login/Facebook
         [HttpPost]
         public LoginResult Facebook([FromBody] User requestUser)
