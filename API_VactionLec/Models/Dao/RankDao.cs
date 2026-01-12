@@ -8,7 +8,7 @@ namespace DotnetCoreServer.Models
         List<RankUser> TotalRank(int Start, int Count);
         List<RankUser> FriendRank(long UserID, List<string> FacebookIDList);
     }
-
+    // DAO : Data Access Object : 데이터베이스에 접근해서 데이터를 삽입,삭제,조회 조작 기능 제공
     public class RankDao : IRankDao
     {
         public IDB db {get;}
