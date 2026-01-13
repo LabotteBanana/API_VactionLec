@@ -19,23 +19,23 @@ namespace DotnetCoreServer.Models
         public UserDao(IDB db){
             this.db = db;
         }
-
+        // FacebookID로 유저 찾기, Post /Login/Facebook일때 사용
         public User FindUserByFUID(string FacebookID){
-            User user = new User();
-            using(MySqlConnection conn = db.GetConnection())
+            User user = new User();                             // 1. User 객체 생성
+            using(MySqlConnection conn = db.GetConnection())    // 2. DB 연결 요청
             {   
-                string query = String.Format(
+                string query = String.Format(   // 3. SQL 쿼리문 작성, Facebook_id로 유저 검색
                     "SELECT user_id, facebook_id, facebook_name, facebook_photo_url, point, created_at, access_token FROM tb_user WHERE facebook_id = '{0}'",
                      FacebookID);
 
                 Console.WriteLine(query);
 
-                using(MySqlCommand cmd = (MySqlCommand)conn.CreateCommand())
+                using(MySqlCommand cmd = (MySqlCommand)conn.CreateCommand())    
                 {
                     cmd.CommandText = query;
-                    using (MySqlDataReader reader = (MySqlDataReader)cmd.ExecuteReader())
+                    using (MySqlDataReader reader = (MySqlDataReader)cmd.ExecuteReader()) // 4. 커맨드 객체 생성, MySql로 SQL 전송
                     {
-                        if (reader.Read())
+                        if (reader.Read())  // 5. 결과값(reader)이 있으면 User 객체에 데이터 매핑
                         {
                             user.UserID = reader.GetInt64(0);
                             user.FacebookID = reader.GetString(1);
@@ -44,7 +44,7 @@ namespace DotnetCoreServer.Models
                             user.Point = reader.GetInt32(4);
                             user.CreatedAt = reader.GetDateTime(5);
                             user.AccessToken = reader.GetString(6);
-                            return user;
+                            return user;    // 6. User 결과 객체 반환
                         }
                     }
                 }
@@ -52,7 +52,8 @@ namespace DotnetCoreServer.Models
             }
             return null;
         }
-        
+
+        // UserID로 유저 찾기, GET /Login/{id}일때 사용
         public User GetUser(long UserID){
             User user = new User();
             using(MySqlConnection conn = db.GetConnection())

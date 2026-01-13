@@ -13,14 +13,14 @@ builder.Logging.AddDebug();
 // Add services to the container.
 
 builder.Services
-    .AddControllers()
+    .AddControllers()   // MVC 패턴에서 C 역할을 하는 컨트롤러 서비스 추가
     .AddNewtonsoftJson(options =>
     {
         options.SerializerSettings.ContractResolver =
             new Newtonsoft.Json.Serialization.DefaultContractResolver();
     });
 
-builder.Services.AddScoped<IUserDao, UserDao>();
+builder.Services.AddScoped<IUserDao, UserDao>();        // 의존성 규칙 설정
 builder.Services.AddScoped<IStageResultDao, StageResultDao>();
 builder.Services.AddScoped<IRankDao, RankDao>();
 builder.Services.AddScoped<IUpgradeDao, UpgradeDao>();

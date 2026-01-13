@@ -13,7 +13,7 @@ namespace DotnetCoreServer.Controllers
     {
         private readonly IUserDao userDao;
 
-        public LoginController(IUserDao userDao)
+        public LoginController(IUserDao userDao)   
         {
             this.userDao = userDao;
         }
