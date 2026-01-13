@@ -81,25 +81,27 @@ namespace DotnetCoreServer.Models
                         if (reader.Read())
                         {
                             user.UserID = reader.GetInt64(0);
-                            user.FacebookID = reader.GetString(1);
-                            user.FacebookName = reader.GetString(2);
-                            user.FacebookPhotoURL = reader.GetString(3);
-                            user.Point = reader.GetInt32(4);
+                            user.FacebookID = reader.IsDBNull(1) ? "" : reader.GetString(1);
+                            user.FacebookName = reader.IsDBNull(2) ? "" : reader.GetString(2);
+                            user.FacebookPhotoURL = reader.IsDBNull(3) ? "" : reader.GetString(3);
+                            user.Point = reader.IsDBNull(4) ? 0 : reader.GetInt32(4);
                             user.CreatedAt = reader.GetDateTime(5);
-                            user.AccessToken = reader.GetString(6);
+                            user.AccessToken = reader.IsDBNull(6) ? "" : reader.GetString(6);
 
-                            user.Diamond = reader.GetInt32(7);
-                            user.Health = reader.GetInt32(8);
-                            user.Defense = reader.GetInt32(9);
-                            user.Damage = reader.GetInt32(10);
-                            user.Speed = reader.GetInt32(11);
-                            user.HealthLevel = reader.GetInt32(12);
-                            user.DefenseLevel = reader.GetInt32(13);
-                            user.DamageLevel = reader.GetInt32(14);
-                            user.SpeedLevel = reader.GetInt32(15);
-                            user.Level = reader.GetInt32(16);
-                            user.Experience = reader.GetInt32(17);
-                            
+                            user.Diamond = reader.IsDBNull(7) ? 0 : reader.GetInt32(7);
+                            user.Health = reader.IsDBNull(8) ? 0 : reader.GetInt32(8);
+                            user.Defense = reader.IsDBNull(9) ? 0 : reader.GetInt32(9);
+                            user.Damage = reader.IsDBNull(10) ? 0 : reader.GetInt32(10);
+                            user.Speed = reader.IsDBNull(11) ? 0 : reader.GetInt32(11);
+
+                            user.HealthLevel = reader.IsDBNull(12) ? 0 : reader.GetInt32(12);
+                            user.DefenseLevel = reader.IsDBNull(13) ? 0 : reader.GetInt32(13);
+                            user.DamageLevel = reader.IsDBNull(14) ? 0 : reader.GetInt32(14);
+                            user.SpeedLevel = reader.IsDBNull(15) ? 0 : reader.GetInt32(15);
+
+                            user.Level = reader.IsDBNull(16) ? 1 : reader.GetInt32(16);
+                            user.Experience = reader.IsDBNull(17) ? 0 : reader.GetInt32(17);
+
                         }
                     }
                 }
