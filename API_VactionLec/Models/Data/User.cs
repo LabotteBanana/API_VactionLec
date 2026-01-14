@@ -25,7 +25,5 @@ namespace DotnetCoreServer.Models
         public int Experience;
         public int ExpForNextLevel;
         public int ExpAfterLastLevel;
-
-
     }
 }
